@@ -10,7 +10,7 @@ def add_edge(adj, x, y):
     adj[x].add(y)
 
 
-def reachability(adj, x, y):
+def reach(adj, x, y):
     if x not in adj:
         return 0
 
@@ -37,12 +37,16 @@ if __name__ == '__main__':
 
     n, m = data[0:2]
     data = data[2:]
+
     edges = list(zip(data[0:(2 * m):2], data[1:(2 * m):2]))
+
     x, y = data[2 * m:]
     adj = {}
+    adj = [[] for _ in range(n)]
+    x, y = x - 1, y - 1
 
     for (a, b) in edges:
         add_edge(adj, a, b)
         add_edge(adj, b, a)
 
-    print(reachability(adj, x, y))
+    print(reach(adj, x, y))
