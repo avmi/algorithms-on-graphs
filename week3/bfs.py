@@ -5,21 +5,22 @@ import queue
 
 
 def distance(adj, s, t):
-    d = [len(adj)] * len(adj)
+    l = len(adj)
+
+    d = [l] * l
     d[s] = 0
 
-    q = []
-    q.append(s)
+    q = [s]
 
     while q:
         u = q.pop(0)
 
         for v in adj[u]:
-            if d[v] == len(adj):
+            if d[v] == l:
                 q.append(v)
                 d[v] = d[u] + 1
 
-    if d[t] != len(adj):
+    if d[t] != l:
         return d[t]
 
     return -1
